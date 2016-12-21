@@ -50,7 +50,7 @@ function git-repositories() {
     clone https://github.com/pivotal-cf/pcf-bosh-ci "$WORKSPACE/ci"
     clone https://github.com/cloudfoundry/bosh-deployment
     clone https://github.com/cloudfoundry/cf-deployment
-    clone https://github.com/pivotal-cf/p-ert-bosh-experiment
+    clone https://github.com/pivotal-cf/p-ert-bosh-experiment "$WORKSPACE/p-ert"
     clone https://github.com/pivotal-cf/pcf-bosh-terraforming-gcp "$WORKSPACE/terraforming-gcp"
 }
 
