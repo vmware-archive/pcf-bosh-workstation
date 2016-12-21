@@ -4,6 +4,7 @@ tap 'git-duet/tap'
 
 brew 'cf-cli'
 brew 'dishy'
+brew 'fasd'
 brew 'fzf'
 brew 'git'
 brew 'git-duet'

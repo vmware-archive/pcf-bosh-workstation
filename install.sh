@@ -75,6 +75,7 @@ function bash-it-setup() {
     bash-it enable completion ssh
 
     bash-it enable plugin fzf
+    bash-it enable plugin fasd
 
     bash-it enable alias general
 
