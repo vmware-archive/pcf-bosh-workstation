@@ -130,35 +130,6 @@ function credalert() {
     git config --global core.hooksPath "$WORKSPACE/git-hooks-core"
 }
 
-function inflight() {
-    local inflight_hook_path="$WORKSPACE/git-hooks-core/prepare-commit-msg.d/inflight-prepare-commit-msg.sh"
-
-    echo "Installing inflight and setting up prepare-msg commit hook"
-
-    set +e
-    which inflight > /dev/null
-    local exit_code="$?"
-    set -e
-
-    #cli
-    if [[ "$exit_code" -ne 0 ]]; then
-        wget -q -O /usr/local/bin/inflight https://github.com/odlp/inflight/releases/download/0.3.0/inflight-osx
-        chmod +x /usr/local/bin/inflight
-    fi
-
-    set +e
-    grep -q FAKE "$inflight_hook_path"
-    local exit_code="$?"
-    set -e
-
-    if [[ ! -f "$inflight_hook_path" || "$exit_code" -eq 0 ]]; then
-        cp "$PWD/inflight-prepare-commit-msg.sh" "$inflight_hook_path"
-        POST_INSTALL="${POST_INSTALL}\nInflight needs configuration. Add Tracker credentials to $inflight_hook_path\n"
-    else
-        POST_INSTALL="${POST_INSTALL}\nInflight already configured. Did not update hook.\n"
-    fi
-}
-
 function post-install() {
     echo -e "$POST_INSTALL"
 }
@@ -173,7 +144,6 @@ function main() {
     mount-gcs
     pivotal_ide_prefs
     credalert
-    inflight
     post-install
 
 #    TODO wait until the CLI is downloadable from somewhere other than Concourse
