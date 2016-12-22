@@ -78,6 +78,7 @@ function bash-it-setup() {
     bash-it enable plugin fasd
 
     bash-it enable alias general
+    bash-it enable alias git
 
     ln -fs "$PWD"/bash_it/* "$BASH_IT/custom/"
 
