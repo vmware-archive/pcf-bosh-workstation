@@ -7,11 +7,13 @@ function sp(){
 
     fly -t wings sp -p pcf-bosh -c pipelines/pcf-bosh.yml -l <(lpass show --notes 5986431050471091932) \
         --var env_name=ol-smokey \
-        --var set_to_tag_filter_to_lock_cf_deployment=tag_filter
+        --var set_to_tag_filter_to_lock_cf_deployment=tag_filter \
+        --var p-ert-branch=1.9
 
     fly -t wings sp -p pcf-bosh-floating -c pipelines/pcf-bosh.yml -l <(lpass show --notes 5986431050471091932) \
         --var env_name=monte-nuovo \
-        --var set_to_tag_filter_to_lock_cf_deployment=ignoreme
+        --var set_to_tag_filter_to_lock_cf_deployment=ignoreme \
+        --var p-ert-branch=master
   popd > /dev/null
 }
 
