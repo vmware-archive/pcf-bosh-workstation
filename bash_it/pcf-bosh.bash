@@ -29,7 +29,7 @@ function bosh_with_env() {
     ca_cert_file="$(mktemp)"
     ca_cert_contents="$(echo "$creds_json" | jq -r .director_ssl.ca > "$ca_cert_file")"
 
-    bosh -e director.$env_name.gcp.pcf-bosh.cf-app.com --uaa-client=ci --uaa-client-secret=$uaa_client_secret --ca-cert="$ca_cert_file" $*
+    bosh -e director.$env_name.gcp.pcf-bosh.cf-app.com --client=ci --client-secret=$uaa_client_secret --ca-cert="$ca_cert_file" $*
 }
 
 function bsmokey() {
