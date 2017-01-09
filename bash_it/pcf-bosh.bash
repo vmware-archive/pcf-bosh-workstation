@@ -39,3 +39,16 @@ function bsmokey() {
 function bmonte() {
     bosh_with_env monte-nuovo $*
 }
+
+function env_cf_password() {
+    local environment_name=$1
+    grep uaa_scim_users_admin_password "$HOME/gcs/pcf-bosh-ci/\"$environment_name\"-cf-creds.yml" | awk '{print $2}'
+}
+
+function smokeypass() {
+    env_cf_password ol-smokey
+}
+
+function montepass() {
+    env_cf_password ol-smokey
+}
