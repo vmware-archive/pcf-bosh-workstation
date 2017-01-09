@@ -50,5 +50,5 @@ function smokeypass() {
 }
 
 function montepass() {
-    env_cf_password ol-smokey
+    env_cf_password monte-nuovo
 }
