@@ -23,7 +23,7 @@ function bosh_with_env() {
     shift
 
     yaml="$(gsutil cat gs://pcf-bosh-ci/\"$env_name\"-bosh-creds.yml)"
-    creds_json="$("$HOME/workspace/ci/scripts/yaml2json" "$yaml")"
+    creds_json="$(echo "$yaml" | "$HOME/workspace/ci/scripts/yaml2json")"
     uaa_client_secret="$(echo "$creds_json" | jq -r .ci_secret)"
 
     ca_cert_file="$(mktemp)"
