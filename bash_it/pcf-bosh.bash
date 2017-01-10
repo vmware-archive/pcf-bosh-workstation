@@ -22,7 +22,7 @@ function bosh_with_env() {
 
     shift
 
-    yaml="$(gsutil cat gs://pcf-bosh-ci/\"$env_name\"-bosh-creds.yml)"
+    yaml="$(gsutil cat gs://pcf-bosh-ci/\"$env_name\"-bosh-vars-store.yml)"
     creds_json="$(echo "$yaml" | "$HOME/workspace/ci/scripts/yaml2json")"
     uaa_client_secret="$(echo "$creds_json" | jq -r .ci_secret)"
 
@@ -43,7 +43,7 @@ function bmonte() {
 function env_cf_password() {
     local environment_name=$1
 
-    gsutil cat gs://pcf-bosh-ci/\"$env_name\"-cf-creds.yml | \
+    gsutil cat gs://pcf-bosh-ci/\"$env_name\"-cf-vars-store.yml | \
     grep uaa_scim_users_admin_password | \
     awk '{print $2}'
 }
