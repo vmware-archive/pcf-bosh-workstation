@@ -22,8 +22,8 @@ function bosh_with_env() {
 
     shift
 
-    creds_path="$HOME/gcs/pcf-bosh-ci/\"$env_name\"-bosh-creds.yml"
-    creds_json="$("$HOME/workspace/ci/scripts/yaml2json" "$creds_path")"
+    yaml="$(gsutil cat gs://pcf-bosh-ci/\"$env_name\"-bosh-creds.yml)"
+    creds_json="$("$HOME/workspace/ci/scripts/yaml2json" "$yaml")"
     uaa_client_secret="$(echo "$creds_json" | jq -r .ci_secret)"
 
     ca_cert_file="$(mktemp)"
@@ -42,7 +42,10 @@ function bmonte() {
 
 function env_cf_password() {
     local environment_name=$1
-    grep uaa_scim_users_admin_password "$HOME/gcs/pcf-bosh-ci/\"$environment_name\"-cf-creds.yml" | awk '{print $2}'
+
+    gsutil cat gs://pcf-bosh-ci/\"$env_name\"-cf-creds.yml | \
+    grep uaa_scim_users_admin_password | \
+    awk '{print $2}'
 }
 
 function smokeypass() {
