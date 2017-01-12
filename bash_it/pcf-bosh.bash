@@ -43,7 +43,7 @@ function bmonte() {
 function env_cf_password() {
     local environment_name=$1
 
-    gsutil cat gs://pcf-bosh-ci/\"$env_name\"-cf-vars-store.yml | \
+    gsutil cat gs://pcf-bosh-ci/\"$environment_name\"-cf-vars-store.yml | \
     grep uaa_scim_users_admin_password | \
     awk '{print $2}'
 }
