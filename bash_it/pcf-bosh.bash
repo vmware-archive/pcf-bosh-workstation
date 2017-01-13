@@ -15,7 +15,7 @@ function sp(){
         --var set_to_tag_filter_to_lock_cf_deployment=ignoreme \
         --var p-ert-branch=master
 
-    fly -t wings sp -p upgrade -c pipelines/simple-ert.yml -l <(lpass show --notes 5986431050471091932) \
+    fly -t wings sp -p upgrade -c pipelines/upgrade-ert.yml -l <(lpass show --notes 5986431050471091932) \
         --var env_name=nanga-parbat
   popd > /dev/null
 }
