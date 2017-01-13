@@ -14,6 +14,9 @@ function sp(){
         --var env_name=monte-nuovo \
         --var set_to_tag_filter_to_lock_cf_deployment=ignoreme \
         --var p-ert-branch=master
+
+    fly -t wings sp -p upgrade -c pipelines/simple-ert.yml -l <(lpass show --notes 5986431050471091932) \
+        --var env_name=nanga-parbat
   popd > /dev/null
 }
 
@@ -40,6 +43,10 @@ function bmonte() {
     bosh_with_env monte-nuovo $*
 }
 
+function bnanga() {
+    bosh_with_env nanga-parbat $*
+}
+
 function env_cf_password() {
     local environment_name=$1
 
@@ -54,4 +61,8 @@ function smokeypass() {
 
 function montepass() {
     env_cf_password monte-nuovo
+}
+
+function nangapass() {
+    env_cf_password nanga-parbat
 }
