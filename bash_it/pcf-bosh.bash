@@ -19,7 +19,7 @@ function sp(){
         --var env_name=nanga-parbat
 
     fly -t wings sp -p pcf-bosh-aws -c pipelines/pcf-bosh-aws.yml -l <(lpass show --notes 5986431050471091932) \
-        --var env_name=mount-whitney
+        --var env_name=mt-rogers
 
   popd > /dev/null
 }
