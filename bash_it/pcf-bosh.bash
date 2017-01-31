@@ -49,6 +49,10 @@ function bnanga() {
     bosh_with_env nanga-parbat $*
 }
 
+function brogers() {
+    bosh_with_env mt-rogers $*
+}
+
 function env_cf_password() {
     local environment_name=$1
 
@@ -66,5 +70,9 @@ function montepass() {
 }
 
 function nangapass() {
+    env_cf_password nanga-parbat
+}
+
+function rogerspass() {
     env_cf_password nanga-parbat
 }
