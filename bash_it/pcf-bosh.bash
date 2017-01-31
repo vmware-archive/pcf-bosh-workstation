@@ -26,7 +26,9 @@ function sp(){
 
 function bosh_with_env() {
     env_name="$1"
+    shift
 
+    iaas="$1"
     shift
 
     yaml="$(gsutil cat gs://pcf-bosh-ci/\"$env_name\"-bosh-vars-store.yml)"
@@ -34,23 +36,23 @@ function bosh_with_env() {
 
     ca_cert="$(bosh int <(echo "$yaml") --path /director_ssl/ca)"
 
-    bosh -e director.$env_name.gcp.pcf-bosh.cf-app.com --client=ci --client-secret=$uaa_client_secret --ca-cert="$ca_cert" $*
+    bosh -e director.$env_name.$iaas.pcf-bosh.cf-app.com --client=ci --client-secret=$uaa_client_secret --ca-cert="$ca_cert" $*
 }
 
 function bsmokey() {
-    bosh_with_env ol-smokey $*
+    bosh_with_env ol-smokey gcp $*
 }
 
 function bmonte() {
-    bosh_with_env monte-nuovo $*
+    bosh_with_env monte-nuovo gcp $*
 }
 
 function bnanga() {
-    bosh_with_env nanga-parbat $*
+    bosh_with_env nanga-parbat gcp $*
 }
 
 function brogers() {
-    bosh_with_env mt-rogers $*
+    bosh_with_env mt-rogers aws $*
 }
 
 function env_cf_password() {
