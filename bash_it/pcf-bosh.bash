@@ -30,13 +30,11 @@ function bosh_with_env() {
     shift
 
     yaml="$(gsutil cat gs://pcf-bosh-ci/\"$env_name\"-bosh-vars-store.yml)"
-    creds_json="$(echo "$yaml" | "$HOME/workspace/ci/scripts/yaml2json")"
-    uaa_client_secret="$(echo "$creds_json" | jq -r .ci_secret)"
+    uaa_client_secret="$(bosh int <(echo "$yaml") --path /ci_secret)"
 
-    ca_cert_file="$(mktemp)"
-    ca_cert_contents="$(echo "$creds_json" | jq -r .director_ssl.ca > "$ca_cert_file")"
+    ca_cert="$(bosh int <(echo "$yaml") --path /director_ssl/ca)"
 
-    bosh -e director.$env_name.gcp.pcf-bosh.cf-app.com --client=ci --client-secret=$uaa_client_secret --ca-cert="$ca_cert_file" $*
+    bosh -e director.$env_name.gcp.pcf-bosh.cf-app.com --client=ci --client-secret=$uaa_client_secret --ca-cert="$ca_cert" $*
 }
 
 function bsmokey() {
