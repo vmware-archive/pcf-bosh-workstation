@@ -2,6 +2,7 @@ tap 'businesscritical/tap'
 tap 'cloudfoundry/tap'
 tap 'git-duet/tap'
 
+brew 'bosh-cli', args: ['without-gosh']
 brew 'cf-cli'
 brew 'dishy'
 brew 'fasd'
