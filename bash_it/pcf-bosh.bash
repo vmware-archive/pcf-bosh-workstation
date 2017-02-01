@@ -39,21 +39,36 @@ function bosh_with_env() {
     bosh -e director.$env_name.$iaas.pcf-bosh.cf-app.com --client=ci --client-secret=$uaa_client_secret --ca-cert="$ca_cert" $*
 }
 
+_bosh() {
+  # All arguments except the first one
+  args=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+  # Only split on newlines
+  local IFS=$'\n'
+  # Call completion (note that the first element of COMP_WORDS is
+  # the executable itself)
+  COMPREPLY=($(GO_FLAGS_COMPLETION=1 bosh "${args[@]}"))
+  return 0
+}
+
 function bsmokey() {
     bosh_with_env ol-smokey gcp $*
 }
+complete -F _bosh bsmokey
 
 function bmonte() {
     bosh_with_env monte-nuovo gcp $*
 }
+complete -F _bosh bmonte
 
 function bnanga() {
     bosh_with_env nanga-parbat gcp $*
 }
+complete -F _bosh bnanga
 
 function brogers() {
     bosh_with_env mt-rogers aws $*
 }
+complete -F _bosh brogers
 
 function env_cf_password() {
     local environment_name=$1
