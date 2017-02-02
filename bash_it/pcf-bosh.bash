@@ -91,5 +91,5 @@ function nangapass() {
 }
 
 function rogerspass() {
-    env_cf_password nanga-parbat
+    env_cf_password mt-rogers
 }
