@@ -3,7 +3,7 @@ tap 'cloudfoundry/tap'
 tap 'git-duet/tap'
 
 brew 'bash-completion'
-brew 'bosh-cli', args: ['without-gosh']
+brew 'bosh-cli', args: ['without-bosh2']
 brew 'cf-cli'
 brew 'dishy'
 brew 'fasd'
