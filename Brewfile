@@ -31,7 +31,3 @@ cask 'intellij-idea'
 cask 'iterm2'
 cask 'screenhero'
 cask 'slack'
-
-tap 'homebrew/fuse'
-brew 'gcsfuse'
-cask 'osxfuse'

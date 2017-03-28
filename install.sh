@@ -87,20 +87,6 @@ function bash-it-setup() {
     set -e
 }
 
-function mount-gcs() {
-    mkdir -p "$HOME/gcs/pcf-bosh-ci" 2> /dev/null || true
-
-    set +e
-    mount | grep -q pcf-bosh-ci
-    local exit_code="$?"
-    set -e
-
-    if [[ "$exit_code" -ne 0 ]]; then
-        POST_INSTALL="${POST_INSTALL}\nTo mount your GCS bucket, run:\n"
-        POST_INSTALL="${POST_INSTALL}gcsfuse pcf-bosh-ci \"$HOME/gcs/pcf-bosh-ci\"\n"
-    fi
-}
-
 function pivotal_ide_prefs() {
     clone https://github.com/pivotal/pivotal_ide_prefs
 
@@ -142,7 +128,6 @@ function main() {
     git-repositories
     git-config
     bash-it-setup
-    mount-gcs
     pivotal_ide_prefs
     credalert
     post-install
