@@ -3,7 +3,6 @@ tap 'cloudfoundry/tap'
 tap 'git-duet/tap'
 tap 'neovim/neovim'
 
-brew 'bash-completion'
 brew 'bosh-cli', args: ['without-bosh2']
 brew 'cf-cli'
 brew 'dishy'
