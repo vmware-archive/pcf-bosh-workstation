@@ -131,9 +131,6 @@ function main() {
     pivotal_ide_prefs
     credalert
     post-install
-
-#    TODO wait until the CLI is downloadable from somewhere other than Concourse
-#    bosh-cli
 }
 
 main
