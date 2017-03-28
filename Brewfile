@@ -1,6 +1,7 @@
 tap 'businesscritical/tap'
 tap 'cloudfoundry/tap'
 tap 'git-duet/tap'
+tap 'neovim/neovim'
 
 brew 'bash-completion'
 brew 'bosh-cli', args: ['without-bosh2']
@@ -19,7 +20,7 @@ brew 'terraform'
 brew 'the_silver_searcher'
 brew 'tig'
 brew 'tree'
-brew 'vim'
+brew 'neovim'
 brew 'watch'
 brew 'wget'
 
