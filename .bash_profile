@@ -9,5 +9,5 @@ export BASH_IT_THEME="bobby"
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
-export EDITOR=vim
-export GIT_EDITOR=vim
+export EDITOR=nvim
+export GIT_EDITOR=nvim

@@ -1,3 +1,4 @@
+alias vim="nvim"
 alias fw="fly -t wings"
 alias fwl="fw login -n system-team-pcf-bosh-pcf-bosh-1-2688"
 
